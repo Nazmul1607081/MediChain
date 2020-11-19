@@ -1,0 +1,133 @@
+<!-- <html>
+
+<body>
+    <div>
+        <input type="text" id="amount">
+        <p id="balance"></p>
+        <button id="deposit">Deposit</button>
+        <button id="withdraw">Withdraw</button>
+        <button onclick="myFunction()">Click me</button>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script>
+        function myFunction() {
+            console.log("clicked");
+            $('#balance').html("clicked");
+
+        }
+        var contract;
+        $(document).ready(function() {
+            // $('#balance').html("this page is ready now");
+            web3 = new Web3(web3.currentProvider);
+
+            var addr = "0x64097Fe89146B300f071c9B849b855D30eCF1A40";
+            var abi = [{
+                "inputs": [{
+                    "internalType": "int256",
+                    "name": "amount",
+                    "type": "int256"
+                }],
+                "name": "deposite",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }, {
+                "inputs": [],
+                "stateMutability": "nonpayable",
+                "type": "constructor"
+            }, {
+                "inputs": [{
+                    "internalType": "int256",
+                    "name": "amount",
+                    "type": "int256"
+                }],
+                "name": "withdraw",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }, {
+                "inputs": [],
+                "name": "getBalance",
+                "outputs": [{
+                    "internalType": "int256",
+                    "name": "",
+                    "type": "int256"
+                }],
+                "stateMutability": "view",
+                "type": "function"
+            }];
+
+            contract = web3.eth.Contract(abi, addr);
+            contract.mathods.getBalance().call().then(
+                function(bal) {
+                    $('#balance').html(bal);
+                }
+            )
+        })
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register information at Blockchain</title>
+
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="./blockchain.js"></script>
+</head>
+
+<body class="container">
+
+    <h1 class="page-header">Register information at Blockchain - RSK network</h1>
+
+    <div class="row">
+        <div>
+            <h3 class="sub-header">Set information</h3>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <td><label for="newInfo">Info:</label> </td>
+                            <td>
+                                <input class="form-control" id="newInfo">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <a href="#" onclick="registerSetInfo()" class="btn btn-primary">Set</a>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <h3 class="sub-header">Get last information saved</h3>
+            <form class="form-inline" role="form">
+                <a href="#" onclick="registerGetInfo()" class="btn btn-primary">Get</a>
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <td>Info:</td>
+                            <td>
+                                <label id="lastInfo">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p id="test">
+        Testing start..
+    </p>
+
+</body>
+
+</html>

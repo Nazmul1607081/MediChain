@@ -1,0 +1,68 @@
+<!-- <body>
+    <form action="login.php" method="POST">
+        <label>UserID</label> <input type="text" name="uid" /><label>Password</label>
+        <input type="text" name="password" /><br />
+        <label>Login as :</label>
+        <label for="doctors">Doctor</label>
+        <input type="radio" name="utype" id="doctors" value="doctors" checked>
+        <label for="patients">Patient</label>
+        <input type="radio" name="utype" id="patients" value="patients"><br />
+        <input type="submit" value="LOGIN">
+    </form>
+    No account?
+    <form action="signup.html">
+        <input type="submit" value="Signup as a Doctor" />
+    </form>
+    <form action="signup1.html">
+        <input type="submit" value="Signup as a Patient" />
+    </form>
+</body> -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/login.css">
+
+
+</head>
+
+<body style="background-image: url('images/bg.jpg')";>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <div class="signin">
+        <form action="/checklogin" method="POST">
+            <h2 style="color: white">Log In</h2>
+            <!--<label>UserID</label>-->
+            <input type="text" name="uid" placeholder="User ID" />
+            <input type="password" name="password" placeholder="Password" /><br /><br />
+            <label class="label">Login as :</label>
+            <input type="radio" name="utype" id="doctors" value="doctors" checked>
+            <label for="doctors">Doctor</label>
+            <input type="radio" name="utype" id="patients" value="patients">
+            <label for="patients">Patient</label></br>
+            <input type="submit" value="LOGIN"><br><br>
+        </form>
+        <label class="label2">No Account?</label>
+        <form action="/doctorsignup">
+            <input type="submit" value="Signup as a Doctor"  />
+        </form>
+        <form action="/patientsignup">
+            <input type="submit" value="Signup as a Patient" />
+        </form>
+    </div>
+</body>
+
+</html>

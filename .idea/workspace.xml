@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="909d82da-2e82-472f-ba43-32f7e38bd262" name="Default Changelist" comment="Basic of express done" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ibTf5TqX3X6YqADSSdvcIpLdC3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\ThesisFinalWebsite\MediChain\public\css" />
+      <recent name="H:\ThesisFinalWebsite\MediChain" />
+      <recent name="H:\ThesisFinalWebsite\MediChain\views" />
+      <recent name="H:\ThesisFinalWebsite\MediChain\public\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\ThesisFinalWebsite\MediChain\views" />
+      <recent name="H:\ThesisFinalWebsite\MediChain" />
+      <recent name="H:\ThesisFinalWebsite\MediChain\public\css" />
+      <recent name="F:\PyCharmProjects\ToDoApp\views" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="909d82da-2e82-472f-ba43-32f7e38bd262" name="Default Changelist" comment="" />
+      <created>1602175399640</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602175399640</updated>
+      <workItem from="1602175421729" duration="799000" />
+      <workItem from="1602176258072" duration="1965000" />
+      <workItem from="1602215019563" duration="10791000" />
+      <workItem from="1602234167349" duration="2980000" />
+      <workItem from="1602237178342" duration="1684000" />
+      <workItem from="1605603340116" duration="4876000" />
+      <workItem from="1605614480372" duration="14901000" />
+      <workItem from="1605658342494" duration="40535000" />
+      <workItem from="1605717762842" duration="883000" />
+      <workItem from="1605759286675" duration="2790000" />
+    </task>
+    <task id="LOCAL-00001" summary="Basic of express done">
+      <created>1602238766794</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602238766794</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Basic of express done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic of express done" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602175763588">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1602175763588" />
+    <state x="458" y="162" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605698072493">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="458" y="162" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1605698072493" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1605694058796">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605694058796" />
+    <state width="1323" height="129" key="GridCell.Tab.0.bottom" timestamp="1605632766511">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="129" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605632766511" />
+    <state width="1323" height="129" key="GridCell.Tab.0.center" timestamp="1605632766510">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="129" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1605632766510" />
+    <state width="1323" height="129" key="GridCell.Tab.0.left" timestamp="1605632766510">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="129" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1605632766510" />
+    <state width="1323" height="129" key="GridCell.Tab.0.right" timestamp="1605632766510">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="129" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605632766510" />
+    <state x="188" y="12" key="SettingsEditor" timestamp="1605609244607">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="188" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605609244607" />
+    <state x="275" y="93" key="Vcs.Push.Dialog.v2" timestamp="1602238846365">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="93" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1602238846365" />
+  </component>
+</project>

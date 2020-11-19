@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MediChain</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script></head>
+<body class="bg-dark">
+<div class="container-sm" >
+    <img height="10%" width="10%" class="rounded mx-auto d-block" src="/images/logo.png" alt="Cinque Terre">
+</div>
+<div class="d-flex justify-content-center pt-5"><form class="form-inline text-white" action="/add" method="POST">
+        ToDo :<input type="text" name="item"> Date: <input type="date" name="date">Time: <input type="time" name="time">
+        <input type="submit" value="Add">
+    </form>
+   </div>
+<div class="d-flex justify-content-center text-white m-5"><h1>The to-do list is given below</h1></div>
+<div class="d-flex justify-content-center mt-6 text-white" > <ol>
+        <% for(var i=0;i<data.length;i++) { %>
+        <li class="mt-8"><h3><%= data[i].item+" "+data[i].date+" "+data[i].time +" " %><a href="/delete/<%= data[i].item %>"><button>I did this</button></a></h3></li>
+        <% } %>
+    </ol></div>
+
+
+</body>
+</html>
