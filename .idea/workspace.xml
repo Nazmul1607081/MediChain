@@ -19,7 +19,29 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="909d82da-2e82-472f-ba43-32f7e38bd262" name="Default Changelist" comment="Basic of express done" />
+    <list default="true" id="909d82da-2e82-472f-ba43-32f7e38bd262" name="Default Changelist" comment="Basic of express done">
+      <change afterPath="$PROJECT_DIR$/blockchain.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/privatekey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/advice.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/confirmation.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/privatekey.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.firebaserc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apointment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctorlist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup1.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" afterPath="$PROJECT_DIR$/test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +51,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -49,6 +72,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,17 +84,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\ThesisFinalWebsite\MediChain\public\css" />
-      <recent name="H:\ThesisFinalWebsite\MediChain" />
-      <recent name="H:\ThesisFinalWebsite\MediChain\views" />
-      <recent name="H:\ThesisFinalWebsite\MediChain\public\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\ThesisFinalWebsite\MediChain\views" />
       <recent name="H:\ThesisFinalWebsite\MediChain" />
       <recent name="H:\ThesisFinalWebsite\MediChain\public\css" />
       <recent name="F:\PyCharmProjects\ToDoApp\views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\ThesisFinalWebsite\MediChain" />
+      <recent name="H:\ThesisFinalWebsite\MediChain\public\css" />
+      <recent name="H:\ThesisFinalWebsite\MediChain\views" />
+      <recent name="H:\ThesisFinalWebsite\MediChain\public\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -97,7 +121,23 @@
       <workItem from="1605614480372" duration="14901000" />
       <workItem from="1605658342494" duration="40535000" />
       <workItem from="1605717762842" duration="883000" />
-      <workItem from="1605759286675" duration="2790000" />
+      <workItem from="1605759286675" duration="27408000" />
+      <workItem from="1605847609300" duration="10304000" />
+      <workItem from="1605928149693" duration="16857000" />
+      <workItem from="1605968011516" duration="2611000" />
+      <workItem from="1606020128856" duration="11409000" />
+      <workItem from="1606118462749" duration="14462000" />
+      <workItem from="1606177034642" duration="1128000" />
+      <workItem from="1606178328921" duration="9512000" />
+      <workItem from="1606271665354" duration="9723000" />
+      <workItem from="1606357885077" duration="8077000" />
+      <workItem from="1606383900020" duration="456000" />
+      <workItem from="1606386278733" duration="4284000" />
+      <workItem from="1606447400139" duration="10044000" />
+      <workItem from="1606464805267" duration="17685000" />
+      <workItem from="1606528278669" duration="3650000" />
+      <workItem from="1606552367434" duration="3864000" />
+      <workItem from="1606569870732" duration="627000" />
     </task>
     <task id="LOCAL-00001" summary="Basic of express done">
       <created>1602238766794</created>
@@ -106,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602238766794</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Basic of express done">
+      <created>1605762308635</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605762308635</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,10 +184,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="458" y="162" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1605698072493" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1605694058796">
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605789908534">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605694058796" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1605789908534" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1605768197395">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605768197395" />
     <state width="1323" height="129" key="GridCell.Tab.0.bottom" timestamp="1605632766511">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -157,13 +208,54 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="129" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605632766510" />
-    <state x="188" y="12" key="SettingsEditor" timestamp="1605609244607">
+    <state x="188" y="12" key="SettingsEditor" timestamp="1606178277738">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="188" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605609244607" />
-    <state x="275" y="93" key="Vcs.Push.Dialog.v2" timestamp="1602238846365">
+    <state x="188" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1606178277738" />
+    <state x="275" y="93" key="Vcs.Push.Dialog.v2" timestamp="1605762500252">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="93" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1602238846365" />
+    <state x="275" y="93" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1605762500252" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/blockchain.js</url>
+          <line>87</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/blockchain.js</url>
+          <line>128</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/blockchain.js</url>
+          <line>165</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/blockchain.js</url>
+          <line>175</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/blockchain.js</url>
+          <line>50</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/blockchain.js</url>
+          <line>3</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app.js</url>
+          <line>325</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

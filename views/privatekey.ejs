@@ -28,8 +28,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/login.css">
 
+    <link rel="stylesheet" href="css/privatekey.css">
 
 </head>
 
@@ -42,26 +42,33 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <div class="signin">
-        <form action="/checklogin" method="POST">
-            <h2 style="color: white">Log In</h2>
-            <!--<label>UserID</label>-->
-            <input type="text" name="uid" placeholder="User ID" />
-            <input type="password" name="password" placeholder="Password" />
-            <input type="text" name="privateKey" placeholder="Private Key" /><br /><br />
-            <label class="label">Login as :</label>
-            <input type="radio" name="utype" id="doctors" value="doctors" checked>
-            <label for="doctors">Doctor</label>
-            <input type="radio" name="utype" id="patients" value="patients">
-            <label for="patients">Patient</label></br>
-            <input type="submit" value="LOGIN"><br><br>
-        </form>
-        <label class="label2">No Account?</label>
-        <form action="/doctorsignup">
-            <input type="submit" value="Signup as a Doctor"  />
-        </form>
-        <form action="/patientsignup">
-            <input type="submit" value="Signup as a Patient" />
+
+    <script>
+           function myFunction() {
+
+                /* Get the text field */
+                var copyText = document.getElementById("privateKey").innerText;
+
+//////894cd9aa0ade905093f1a19d8344fa085288c8b30a6248dfecca7bcff84eb0e5
+                /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+               /* Copy the text inside the text field */
+                document.execCommand("copy");
+
+                /* Alert the copied text */
+                window.alert("Copied the text: " + copyText.value);
+            }
+    </script>
+    <div class="key">
+        <p>This is your wallet address. Store it secrate palce to use it further for retrive yor data from blockchian</p>
+        <p id="privateKey">
+<%= privateKey %>
+        </p>
+        <button class="btn bg-primary" onclick="myFunction()">Copy text</button>
+        <form action="/login">
+            <input type="submit" value="OK" />
         </form>
     </div>
 </body>

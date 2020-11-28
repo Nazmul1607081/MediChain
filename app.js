@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var session = require('express-session');
 
-//const key = new NodeRSA({b: 512});
-var path = require('path');
-var fs = require("fs");
+const fs = require('fs');
+const crypto = require('asymmetric-crypto')
+
 var multer = require('multer');
 var upload = multer({ dest: 'adddoctor/'});
+
+const { Blockchain, Transaction, Block } = require('./blockchain');
 
 ///key generator
 const EC = require('elliptic').ec;
@@ -19,7 +21,6 @@ var con = mysql.createConnection({
   user: "username",
   password: "",
   database: "medichain",
-
 });
 
 const app = express();
@@ -37,14 +38,6 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(upload.array());
 app.use(bodyParser.urlencoded({ extended: true  }));
-     // var g_data = "genesis block";
-     // var pubKey = key.exportKey('public');
-     // var priKey =key.exportKey('private');
-     // var a = pubKey.toString();
-     // var b= priKey.toString();
-     // var publicKey = NodeRSA(a)
-     // var privateKey =NodeRSA(b)
-
 
 app.get('/', function(req, res) {
     if (req.session.loggedin) {
@@ -60,38 +53,55 @@ app.get('/logout', function(req,res){
         req.session.loggedin=false;
         res.render('login')
 	}
+    fs.access('./private', fs.F_OK, (err) => {
+        if (err) {
+            console.log("File does not exist.")
+        } else {
+            console.log("File exists.")
+            fs.unlink('private',function (err) {
+                if(err)throw err;
+                console.log("Logout file deleted")
+            })
+        }
+    })
+
+    res.render('login')
+
 	res.end();
 })
+
+///login
 app.get('/login', function(req, res) {
     res.render('login');
-})
-app.get('/doctorsignup', function(req, res) {
-    res.render('signup');
-})
-app.get('/patientsignup', function(req, res) {
-    res.render('signup1');
 })
 app.post('/checklogin',function(request, response) {
     console.log(request.body)
     var username = request.body.uid;
 	var password = request.body.password;
+	var privateKey = request.body.privateKey;
     var  utype = request.body.utype;
+
+    fs.writeFile('private', privateKey, function (err) {
+        if (err) return console.log(err);
+        console.log('write to private');
+    });
+
+    var publicKey = crypto.fromSecretKey(privateKey).publicKey;
 
     var sql;
     if(utype === 'doctors'){
-        sql= 'SELECT * FROM doctors WHERE uid = ? OR password = ?'
+        sql= 'SELECT * FROM doctors WHERE uid = ? AND password = ? AND wallet_address=?'
     }
     else{
-        sql= 'SELECT * FROM patients WHERE uid = ? OR password = ?'
+        sql= 'SELECT * FROM patients WHERE uid = ? AND password = ? AND wallet_address=?'
     }
     ///select data
-	if (username && password) {
-		con.query(sql, [username, password], function(error, results, fields) {
-			if (results.length > 0) {
+	if (username && password && privateKey) {
+		con.query(sql, [username, password,publicKey], function(error, results, fields) {
+			if (results.length>0) {
 				request.session.loggedin = true;
 				request.session.username = username;
 				request.session.user = utype;
-
 				response.redirect('/');
 			} else {
 				response.send('Incorrect Username and/or Password!');
@@ -105,21 +115,24 @@ app.post('/checklogin',function(request, response) {
 
 })
 
-//add doctor
+///signup doctor
+app.get('/doctorsignup', function(req, res) {
+    if (req.session.loggedin) {
+        console.log(req.session.user)
+		res.render('index');
+	} else {
+		res.render('signup');
+	}
+	res.end();
+})
 app.post('/adddoctor',function(req, res) {
-    const NodeRSA = require('node-rsa');
+
     console.log(req.body)
-     const key = new NodeRSA({b: 512});
-     var pubKey = key.exportKey('public');
-     var priKey =key.exportKey('private');
-     var a = pubKey.toString();
-     var b= priKey.toString();
 
+    const myKeyPair = crypto.keyPair()
+    const publicKey = myKeyPair.publicKey;
+    const privateKey = myKeyPair.secretKey;
 
-    // const key = ec.genKeyPair();
-    // const publicKey = key.getPublic('hex');
-    // const privateKey = key.getPrivate('hex');
-     console.log(b)
 
 
 
@@ -131,7 +144,7 @@ app.post('/adddoctor',function(req, res) {
     var  qualification = req.body.qualification;
     var exprience = req.body.exprience;
     var department = req.body.department;
-    var  wallet_address = a;
+    var  wallet_address = publicKey;
     var  gender = req.body.gender;
 
 
@@ -143,7 +156,7 @@ app.post('/adddoctor',function(req, res) {
 		    if (error) throw error;
 		    console.log(results)
 		    if (results) {
-		        res.redirect('/login');
+		        res.redirect('/key/'+privateKey);
 		        res.end();
             }
 
@@ -154,28 +167,30 @@ app.post('/adddoctor',function(req, res) {
 	}
 })
 
-///add patient
+///signup patient
+app.get('/patientsignup', function(req, res) {
+    if (req.session.loggedin) {
+        console.log(req.session.user)
+		res.render('index');
+	} else {
+		res.render('signup1');
+	}
+	res.end();
+})
 app.post('/addpatient',function(req, res) {
 
     console.log(req.body)
-     const NodeRSA = require('node-rsa');
-     const key = new NodeRSA({b: 512});
-     var pubKey = key.exportKey('public');
-     var priKey =key.exportKey('private');
-     var a = pubKey.toString();
-     var b= priKey.toString();
 
-    // const key = ec.genKeyPair();
-    // const publicKey = key.getPublic('hex');
-    // const privateKey = key.getPrivate('hex');
-    console.log(b)
+    const myKeyPair = crypto.keyPair()
+    const publicKey = myKeyPair.publicKey;
+    const privateKey = myKeyPair.secretKey;
 
     var fname = req.body.fname;
     var lname = req.body.lname;
     var uid = req.body.uid;
     var password = req.body.password;
-    var  wallet_address = a;
-    var  gender = req.body.gender;
+    var  wallet_address = publicKey;
+    var  gender = req.body.gender ;
 
 
     ///insert data
@@ -186,7 +201,7 @@ app.post('/addpatient',function(req, res) {
 		    if (error) throw error;
 		    console.log(results)
 		    if (results) {
-		        res.redirect('/login');
+		        res.redirect('/key/'+privateKey);
 		        res.end();
             }
 
@@ -222,14 +237,14 @@ app.get('/doctorlist/:dtype', function(req, res) {
 
 })
 
+///appointment
 app.get('/appointment/:uid', function(req, res) {
      var uid = req.params.uid;
      console.log(uid)
      res.render('appointment',{uid:uid})
 })
+app.post('/addappointment/:uid',async function(req, res) {
 
-app.post('/addappointment/:uid', function(req, res) {
-    //form data
      var mobile_no = req.body.mobile_number;
      var condition = req.body.condition;
      var temparature = req.body.temparature;
@@ -239,15 +254,20 @@ app.post('/addappointment/:uid', function(req, res) {
      var postal = req.body.postal;
 
 
+     let data  ="mobile no : " +mobile_no+" "+
+         "condition : "+condition+" "+
+         "temperature : "+temparature+" "+
+         "pressure : "+pressure+" "+
+         "city : "+city+" "+
+         "divition : "+division+" "+
+         "postal : "+postal+" ";
 
 
-     // var encriptedData = publicKey.encrypt(g_data,'base64');
-     // console.log(encriptedData);
-     // var decriptedData = privateKey.decrypt(encriptedData,'utf8');
-     // console.log(decriptedData);
 
-    var d_wallet_address;
+
+    // var d_wallet_address;
     var p_wallet_address;
+    let p_private_key;
 
     var duid = req.params.uid;
     var puid = req.session.username;
@@ -255,49 +275,162 @@ app.post('/addappointment/:uid', function(req, res) {
     console.log(duid)
     console.log(puid)
 
+    fs.readFile('private', 'utf8', function (err,data) {
+            if (err) {
+            return console.log(err);
+        }
+        p_private_key = data;
+        p_wallet_address = crypto.fromSecretKey(p_private_key).publicKey
+        console.log(data);
+        console.log('data');
+
+
     var sql = "SELECT * FROM doctors WHERE uid = ?"
-    con.query(sql,[duid], function(error, results, fields) {
-			if (results) {
-				d_wallet_address = results[0].wallet_address;
-				console.log(d_wallet_address)
-			}
-
-		});
-    sql = "SELECT * FROM patients WHERE uid = ?"
-    con.query(sql,[puid], function(error, results, fields) {
-			if (results) {
-				p_wallet_address = results[0].wallet_address;
-				console.log(p_wallet_address)
-			}
-			res.end();
-		});
-    /// blockchain
-
-    sql = "SELECT * FROM apointments"
-    con.query(sql, function(error, results, fields) {
-			if(error)throw error;
-
-			console.log(results);
-            var previous_hash = results[results.length-1].previous_hash;
-            var data = Date.now()+" "+puid+" "+mobile_no+" "+condition+" "+temparature+" "+pressure+" "+city+" "+division+" "+postal+" ";
-
-            var d_wallet = NodeRSA(d_wallet_address);
-
-            var hash = d_wallet.encrypt(data,'base64');
-            if(results){
-                var inser_sql = "INSERT INTO apointments(duid,puid,sender_address,data,previous_hash,hash) VALUES (?,?,?,?,?,?)"
-                con.query(inser_sql,[duid,puid,p_wallet_address,"",previous_hash,hash],function(error,results,fields){
-                    if(results){
-                        console.log("success");
+    con.query(sql,[duid], function(error, r, fields) {
+        if (r) {
+            console.log("r")
+            console.log(r)
+            let d_wallet_address = r[0].wallet_address;
+            console.log(d_wallet_address)
+            const encrypted = crypto.encrypt(data, d_wallet_address, p_private_key)
+            let final_sql = "SELECT blocks.*, transactions.* FROM blocks, transactions WHERE blocks.transactions = transactions.transaction_no;"
+            con.query(final_sql,function (err,res,fields) {
+                if(err)throw err;
+                if(res){
+                    console.log(res);
+                    console.log('res');
+                    let blocks = [];
+                    for(let i=0;i<res.length;i++){
+                        let txs=[];
+                        let tx = new Transaction(res[i].from_address,res[i].to_address,res[i].amount);
+                        txs.push(tx);
+                        let b = new  Block(res[i].timestamp,txs,res[i].previousHash,res[i].hash)
+                        blocks.push(b);
                     }
-                })
-            }
+                    console.log(blocks)
 
-			res.end();
-		});
+                    const savjeeCoin = new Blockchain(blocks);
+                    const tx1 = new Transaction(p_wallet_address, d_wallet_address,encrypted.nonce+"*medichain*"+ encrypted.data);
+                    tx1.signTransaction(p_private_key);
+                    savjeeCoin.addTransaction(tx1);
+                    savjeeCoin.minePendingTransactions(p_wallet_address);
+                }
+            })
+            res.redirect('/');
+        }
+    });
+    });
+})
+
+///advice
+app.get('/advice',function(request,response){
+    let all_data = [];
+    let final_sql = "SELECT blocks.*, transactions.* FROM blocks, transactions WHERE blocks.transactions = transactions.transaction_no;"
+    con.query(final_sql,function (err,res,fields) {
+        if(err)throw err;
+        if(res){
+            //console.log(res);
+            let blocks = [];
+            for(let i=0;i<res.length;i++){
+                let txs=[];
+                let tx = new Transaction(res[i].from_address,res[i].to_address,res[i].amount);
+                txs.push(tx);
+                let b = new  Block(res[i].timestamp,txs,res[i].previousHash,res[i].hash)
+                blocks.push(b);
+            }
+            console.log(blocks)
+
+            const savjeeCoin = new Blockchain(blocks);
+            fs.readFile('private', 'utf8', function (err,data) {
+                if (err) {
+                    return console.log(err);
+                }
+                let d_private_key = data;
+                let d_wallet_address = crypto.fromSecretKey(d_private_key).publicKey
+
+                all_data = savjeeCoin.getBalanceOfAddress(d_private_key)
+                console.log(d_wallet_address)
+                console.log('data');
+                console.log(all_data);
+                response.render('advice',{data:all_data});
+            });
+
+        }
+    })
+
+})
+app.post('/advice/:id',function(req,response){
+    let id = req.params.id;
+    let all_data = [];
+    let final_sql = "SELECT blocks.*, transactions.* FROM blocks, transactions WHERE blocks.transactions = transactions.transaction_no;"
+    con.query(final_sql,function (err,res,fields) {
+        if(err)throw err;
+        if(res){
+            //console.log(res);
+            let blocks = [];
+            for(let i=0;i<res.length;i++){
+                let txs=[];
+                let tx = new Transaction(res[i].from_address,res[i].to_address,res[i].amount);
+                txs.push(tx);
+                let b = new  Block(res[i].timestamp,txs,res[i].previousHash,res[i].hash)
+                blocks.push(b);
+            }
+            console.log(blocks)
+
+            const savjeeCoin = new Blockchain(blocks);
+            fs.readFile('private', 'utf8', function (err,data) {
+                if (err) {
+                    return console.log(err);
+                }
+                let d_private_key = data;
+                let d_wallet_address = crypto.fromSecretKey(d_private_key).publicKey
+                all_data = savjeeCoin.getBalanceOfAddress(d_private_key)
+
+                let p_wallet_address = all_data[id].fromAddress;
+
+                let advice = req.body.advice;
+                advice = "*advice*"+advice;
+                ///advice as sa transaction
+                console.log(d_wallet_address)
+                const encrypted = crypto.encrypt(advice, p_wallet_address, d_private_key)
+
+                const tx1 = new Transaction(d_wallet_address, p_wallet_address,encrypted.nonce+"*medichain*"+ encrypted.data);
+                tx1.signTransaction(d_private_key);
+                savjeeCoin.addTransaction(tx1);
+                savjeeCoin.minePendingTransactions(d_wallet_address);
+
+                response.render('advice',{data:all_data});
+            });
+
+        }
+    })
 
 })
 
+app.get('/key/:key',function(req,res){
+    var privateKey = req.params.key;
+    res.render('privatekey',{privateKey:privateKey})
+})
+
+function test(){
+    const myKeyPair = crypto.keyPair()
+    const theirKeyPair = crypto.keyPair()
+    const encrypted = crypto.encrypt('some data', 'tssFywXYNAVFg+zV6Aw7eUKX7c68DBP5l/WQB0iiAZQ=', 'YtugnW+icJiAXQXgABtwW5e5rwW4sIR7sEnOQbj3JNjUUj5FLeouoSvz51OiEfGA1hzWOQx3xcmWkpY1AEideg==')
+    const decrypted = crypto.decrypt('nHNAkgqr2JP1+jmchfTBlBv53Pd3V3PqEA==','+W/DQf4V+HfArCi3+Tr3r/FUdPrkXe53', '1FI+RS3qLqEr8+dTohHxgNYc1jkMd8XJlpKWNQBInXo=','LyL7fWt+sR173PjCBmDqBJ3FRLjQpOSsJR5A96wpGT22ywXLBdg0BUWD7NXoDDt5QpftzrwME/mX9ZAHSKIBlA==')
+    console.log()
+    console.log(theirKeyPair.publicKey)
+    console.log(myKeyPair.secretKey)
+    console.log(encrypted.data)
+    console.log(encrypted.nonce)
+    console.log(myKeyPair.publicKey)
+    console.log(theirKeyPair.secretKey)
+    console.log(decrypted)
+    console.log()
+}
+app.get('/test',function (req,res) {
+    test();
+    res.send("Testing...")
+})
 
 var server = app.listen(8080, function() {
     var host = server.address().address
@@ -305,3 +438,5 @@ var server = app.listen(8080, function() {
 
     console.log("Example app listening at http://%s:%s", host, port)
 })
+
+
